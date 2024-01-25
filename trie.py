@@ -1,5 +1,3 @@
-import pickle
-
 class TrieNode:
     def __init__(self):
         # Stores children nodes and whether node is the end of a word
@@ -9,6 +7,7 @@ class TrieNode:
 class Trie:
     def __init__(self):
         self.root = TrieNode()
+        self.train()
     def insert(self, word: str) -> None:
         cur = self.root
         for c in word:
@@ -30,11 +29,7 @@ class Trie:
                 return False
             cur = cur.children[c]
         return True
-
-trie = Trie()
-
-
-
-with open('trie.pkl', 'wb') as f:  # open a text file
-    pickle.dump(trie, f)
-f.close()
+    def train(self):
+        temp = open("words.txt",'r').read().split('\n')
+        for i in temp:
+            self.insert(i)

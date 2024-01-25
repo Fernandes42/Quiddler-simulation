@@ -1,4 +1,5 @@
 from random import shuffle
+from trie import Trie
 class Hand:
     def __init__(self,draw):
         self.card = draw
@@ -23,6 +24,7 @@ class Game:
         self.discard_pile = []
         self.hands = [[] for i in range(self.no_players)]
         self.open_card = None
+        self.trie = Trie()
     def shuffle_deck(self):
         shuffle(self.deck)
     def deal_hands(self):
@@ -42,9 +44,4 @@ class Game:
         print(f"{self.card_dealt} cards each for {self.no_players}, their hands are {self.hands} and the score so far is {self.scores}")
         print(f"Deck is {self.deck} and the discard pile is {self.discard_pile}")
     
-game = Game(3)
-game.deal_hands()
-game.reset_deck()
-game.print_game_state()
-
 
