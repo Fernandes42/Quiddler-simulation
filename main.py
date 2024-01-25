@@ -1,4 +1,16 @@
 from random import shuffle
+class Hand:
+    def __init__(self,draw):
+        self.card = draw
+        self.value = 0
+    def get_hand(self):
+        return self.card
+    def get_value(self):
+        return self.value
+class Player:
+    def __init__(self,name):
+        self.name = name
+        self.score = 0
 
 class Game:
     def __init__(self,no_players):
